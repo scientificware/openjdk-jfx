@@ -142,24 +142,25 @@ float Font::platformWidthForGlyph(Glyph c) const
 
 FloatRect Font::platformBoundsForGlyph(Glyph) const
     {
-    return FloatRect(); //That is OK! platformWidthForGlyph impl is enough.
+    //return FloatRect(); //That is OK! platformWidthForGlyph impl is enough.
     
     JNIEnv* env = WebCore_GetJavaEnv();
 
     RefPtr<RQRef> jFont = m_platformData.nativeFontData();
     if (!jFont) {
-        return 0.0f;
+        return FloatRect();
     }
 
-    static jmethodID getGlyphBoundingBox_mID = env->GetMethodID(PG_GetFontClass(env), "getGlyphBoundingBox", "(I)D");
+    static jmethodID getGlyphBoundingBox_mID = env->GetMethodID(PG_GetFontClass(env), "getGlyphBoundingBox", "(I)[F");
     ASSERT(getGlyphBoundingBox_mID);
 
-    float boudingBox[4];
-
-    (jfloatArray) res = (jfloatArray)env->CallObjectMethod(*jFont, getGlyphBoundingBox_mID, (jint)c);
+    jfloatArray boundingBox = (jfloatArray)env->CallObjectMethod(*jFont, getGlyphBoundingBox_mID, (jint)c);
+    
+    jfloat *bBox = env->GetFloatArrayElements(boundingBox,0);
+    
     CheckAndClearException(env);
 
-    return FloatRect(res[0], res[1], res[2], res[3]);
+    return FloatRect(bBox[0], bBox[1], bBox[2], bBox[3]);
     }
 
 }
