@@ -141,9 +141,7 @@ float Font::platformWidthForGlyph(Glyph c) const
 }
 
 FloatRect Font::platformBoundsForGlyph(Glyph c) const
-    {
-    //return FloatRect(); //That is OK! platformWidthForGlyph impl is enough.
-    
+{
     JNIEnv* env = WebCore_GetJavaEnv();
 
     RefPtr<RQRef> jFont = m_platformData.nativeFontData();
