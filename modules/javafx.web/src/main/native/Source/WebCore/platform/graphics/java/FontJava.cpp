@@ -155,7 +155,6 @@ FloatRect Font::platformBoundsForGlyph(Glyph c) const
     jfloatArray boundingBox = (jfloatArray)env->CallObjectMethod(*jFont, getGlyphBoundingBox_mID, (jint)c);
     
     jfloat *bBox = env->GetFloatArrayElements(boundingBox,0);
-    env->ReleaseFloatArrayElements(boundingBox, bBox, 0);
     
     CheckAndClearException(env);
 
