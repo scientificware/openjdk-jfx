@@ -146,7 +146,7 @@ FloatRect Font::platformBoundsForGlyph(Glyph c) const
 
     RefPtr<RQRef> jFont = m_platformData.nativeFontData();
     if (!jFont) {
-        return FloatRect();
+        return {};
     }
 
     static jmethodID getGlyphBoundingBox_mID = env->GetMethodID(PG_GetFontClass(env), "getGlyphBoundingBox", "(I)[F");
