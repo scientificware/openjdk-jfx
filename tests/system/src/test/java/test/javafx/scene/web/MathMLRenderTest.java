@@ -84,10 +84,6 @@ public class MathMLRenderTest {
 
     static String content = "<!doctype html>"
             + "<html>"
-            + "   <head>"
-            + "      <meta charset=\"UTF-8\">"
-            + "      <title>OpenJFX and MathML</title>"
-            + "   </head>"
             + "   <body>"
             + "      <p>"
             + BodyContent
