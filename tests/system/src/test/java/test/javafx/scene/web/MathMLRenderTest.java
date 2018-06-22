@@ -110,7 +110,6 @@ public class MathMLRenderTest {
 
         @Override
         public void start(Stage primaryStage) {
-            primaryStage.setTitle("OpenJFX MathML Rendering Issue Test");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
             launchLatch.countDown();
