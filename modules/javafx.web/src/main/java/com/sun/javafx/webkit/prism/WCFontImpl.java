@@ -45,8 +45,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 final class WCFontImpl extends WCFont {
-    private static float[] bb = new float[4];
-    
     private final static Logger log =
         Logger.getLogger(WCFontImpl.class.getName());
 
@@ -163,8 +161,8 @@ final class WCFontImpl extends WCFont {
     }
 
     @Override public float[] getGlyphBoundingBox(int glyph) {
-        bb = getFontStrike().getFontResource().getGlyphBoundingBox(glyph, font.getSize(), bb);
-        return new float[]{bb[0], -bb[3], bb[2], bb[3]-bb[1]};
+        float[] bb = getFontStrike().getFontResource().getGlyphBoundingBox(glyph, font.getSize(), bb);
+        return new float[]{bb[0], -bb[3], bb[2], bb[3] - bb[1]};
     }
 
     @Override public float getXHeight() {
