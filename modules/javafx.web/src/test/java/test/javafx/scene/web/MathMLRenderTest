@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2018, 2018, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2018, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -25,14 +25,15 @@
 
 package test.javafx.scene.web;
 
-import org.junit.Assert;
-
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class MathMLRenderTest extends TestBase {
 
-    // Document test
-    static String BodyContent
+    @Test public void testTokenHeight() throws Exception {
+
+        // Document test
+        String mathmlContent
             = "<math display=\"block\">"
             + "   <mrow>"
             + "      <mi>x</mi>"
@@ -63,25 +64,22 @@ public class MathMLRenderTest extends TestBase {
             + "   </mrow>"
             + "</math>";
 
-    static String content = "<!doctype html>"
+        String htmlBody = "<!doctype html>"
             + "<html>"
             + "   <body>"
             + "      <p>"
-            + BodyContent
+            + mathmlContent
             + "      </p>"
             + "   </body>"
             + "</html>";
-
-    @Test public void testgetTokenHeight() throws Exception {
-
-        loadContent(content);
+            
+        loadContent(htmlBody);
 
         int height = (int) executeScript(
             "elements = document.getElementsByTagName('mo');"
             + "element = elements[0].clientHeight;"
         );
 
-        boolean rightRender = !(height < 2);
-        Assert.assertTrue("Check MathML token height : " + height + " is much smaller than the expected size." , rightRender);      
+        assertTrue("MathML token height must be greater than " + height, height > 1);      
     }
 }
