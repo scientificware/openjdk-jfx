@@ -108,6 +108,13 @@ public final class WCFontPerfLogger extends WCFont {
         return res;
     }
 
+    public float[] getGlyphBoundingBox(int glyph) {
+        logger.resumeCount("GETGLYPHBOUNDINGBOX");
+        float[] res = fnt.getGlyphBoundingBox(glyph);
+        logger.suspendCount("GETGLYPHBOUNDINGBOX");
+        return res;
+    }    
+
     public double getStringWidth(String str) {
         logger.resumeCount("GETSTRINGLENGTH");
         double res = fnt.getStringWidth(str);

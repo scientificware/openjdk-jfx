@@ -44,6 +44,8 @@ public abstract class WCFont extends Ref {
     
     public abstract float[] getGlyphBoundingBox(int glyph);
 
+    public abstract float[] getGlyphBoundingBox(int glyph);
+
     public abstract double[] getStringBounds(String str, int from, int to,
                                              boolean rtl);
 

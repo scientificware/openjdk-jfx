@@ -160,6 +160,12 @@ final class WCFontImpl extends WCFont {
         return getFontStrike().getFontResource().getAdvance(glyph, font.getSize());
     }
 
+    @Override public float[] getGlyphBoundingBox(int glyph) {
+        float[] bb = new float[4];
+        bb = getFontStrike().getFontResource().getGlyphBoundingBox(glyph, font.getSize(), bb);
+        return new float[]{bb[0], -bb[3], bb[2], bb[3] - bb[1]};
+    }
+
     @Override public float getXHeight() {
         return getFontStrike().getMetrics().getXHeight();
     }
