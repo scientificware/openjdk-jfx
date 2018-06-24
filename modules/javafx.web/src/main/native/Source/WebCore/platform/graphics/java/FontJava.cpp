@@ -159,5 +159,4 @@ FloatRect Font::platformBoundsForGlyph(Glyph c) const
     CheckAndClearException(env);
     return bb;
 }
-
 }
