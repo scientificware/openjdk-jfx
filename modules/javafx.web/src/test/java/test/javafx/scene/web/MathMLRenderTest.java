@@ -72,7 +72,7 @@ public class MathMLRenderTest extends TestBase {
             + "      </p>"
             + "   </body>"
             + "</html>";
-            
+ 
         loadContent(htmlBody);
 
         int height = (int) executeScript(
@@ -80,6 +80,6 @@ public class MathMLRenderTest extends TestBase {
             + "element = elements[0].clientHeight;"
         );
 
-        assertTrue("MathML token height must be greater than " + height, height > 1);      
+        assertTrue("MathML token height must be greater than " + height, height > 1);
     }
 }
