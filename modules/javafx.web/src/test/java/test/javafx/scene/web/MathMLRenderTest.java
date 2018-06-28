@@ -82,4 +82,4 @@ public class MathMLRenderTest extends TestBase {
 
         assertTrue("MathML token height must be greater than " + height, height > 1);
     }
-}ff
+}
