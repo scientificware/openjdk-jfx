@@ -72,7 +72,7 @@ public class MathMLRenderTest extends TestBase {
             + "      </p>"
             + "   </body>"
             + "</html>";
- 
+
         loadContent(htmlBody);
 
         int height = (int) executeScript(
